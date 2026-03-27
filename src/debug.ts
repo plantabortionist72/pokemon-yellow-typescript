@@ -39,7 +39,7 @@ export function consumeDebugWarp(): DebugWarpRequest | null {
 }
 
 // Fly destinations from assembly FlyWarpDataPtr (data/maps/special_warps.asm)
-// + key indoor locations. Only maps that exist in retro-rom-player/data/maps/.
+// + key indoor locations. Only maps that exist in pokemon-yellow-typescript/data/maps/.
 const WARP_DESTINATIONS: { label: string; map: string; warpId: number; stepPos?: { x: number; y: number } }[] = [
   // Fly destinations (outdoor — use assembly fly coordinates in step units)
   { label: 'Pallet Town',    map: 'PalletTown',    warpId: 0, stepPos: { x: 5, y: 6 } },

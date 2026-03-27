@@ -9,7 +9,7 @@ This project requires the [pret/pokeyellow](https://github.com/pret/pokeyellow) 
 ```
 your-projects/
 ├── pokeyellow/          # git clone https://github.com/pret/pokeyellow
-└── retro-rom-player/    # this repo
+└── pokemon-yellow-typescript/    # this repo
 ```
 
 The ASM source is the single source of truth for all game logic, UI layouts, text strings, and sprite data. Claude Code (and developers) need access to it for:
